@@ -57,6 +57,18 @@ blocks:
     coordinate: [160, 8.0]
     rotation: 0
     state: enabled
+- name: test123
+  id: variable
+  parameters:
+    comment: ''
+    value: 437.125e6
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [424, 8.0]
+    rotation: 0
+    state: enabled
 - name: blocks_message_debug_1
   id: blocks_message_debug
   parameters:
