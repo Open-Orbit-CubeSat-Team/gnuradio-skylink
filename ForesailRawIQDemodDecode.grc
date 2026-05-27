@@ -1,0 +1,852 @@
+options:
+  parameters:
+    author: ''
+    catch_exceptions: 'True'
+    category: '[GRC Hier Blocks]'
+    cmake_opt: ''
+    comment: ''
+    copyright: ''
+    description: ''
+    gen_cmake: 'On'
+    gen_linking: dynamic
+    generate_options: qt_gui
+    hier_block_src_path: '.:'
+    id: ForesailRawIQDemodDecode
+    max_nouts: '0'
+    output_language: python
+    placement: (0,0)
+    qt_qss_theme: ''
+    realtime_scheduling: ''
+    run: 'True'
+    run_command: '{python} -u {filename}'
+    run_options: prompt
+    sizing_mode: fixed
+    thread_safe_setters: ''
+    title: ForesailIQ - Skylink - Sample Demod
+    window_size: (1000,1000)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [8, 8]
+    rotation: 0
+    state: enabled
+
+blocks:
+- name: samp_rate
+  id: variable
+  parameters:
+    comment: ''
+    value: '2000000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [200, 16.0]
+    rotation: 0
+    state: enabled
+- name: tune_shift
+  id: variable_qtgui_range
+  parameters:
+    comment: ''
+    gui_hint: ''
+    label: ''
+    min_len: '200'
+    orient: QtCore.Qt.Horizontal
+    rangeType: float
+    start: '-50000'
+    step: '1'
+    stop: '50000'
+    value: '0'
+    widget: counter_slider
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [312, 16.0]
+    rotation: 0
+    state: enabled
+- name: analog_agc2_xx_0
+  id: analog_agc2_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    attack_rate: 1e-1
+    comment: ''
+    decay_rate: 1e-2
+    gain: '5'
+    max_gain: '65536'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    reference: '1'
+    type: complex
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [856, 168.0]
+    rotation: 0
+    state: enabled
+- name: analog_agc_xx_0
+  id: analog_agc_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    gain: '1.0'
+    max_gain: '2'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    rate: '0.001'
+    reference: '1.0'
+    type: float
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [304, 384.0]
+    rotation: 0
+    state: enabled
+- name: analog_quadrature_demod_cf_0
+  id: analog_quadrature_demod_cf
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    gain: '13'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1056, 200.0]
+    rotation: 0
+    state: enabled
+- name: blocks_file_source_0_0
+  id: blocks_file_source
+  parameters:
+    affinity: ''
+    alias: ''
+    begin_tag: pmt.PMT_NIL
+    comment: ''
+    file: /home/groundstation-user/GS1/Foresail1P_NightOps/Foresail_4_18.cfile
+    length: '0'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    offset: '0'
+    repeat: 'False'
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [8, 216.0]
+    rotation: 0
+    state: enabled
+- name: blocks_message_debug_0
+  id: blocks_message_debug
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    en_uvec: 'True'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1088, 536.0]
+    rotation: 0
+    state: disabled
+- name: blocks_throttle_0
+  id: blocks_throttle
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    ignoretag: 'True'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samples_per_second: samp_rate
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [216, 280.0]
+    rotation: 0
+    state: enabled
+- name: dc_blocker_xx_0
+  id: dc_blocker_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    length: '250'
+    long_form: 'True'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    type: ff
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [152, 400.0]
+    rotation: 0
+    state: enabled
+- name: digital_binary_slicer_fb_1
+  id: digital_binary_slicer_fb
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [904, 416.0]
+    rotation: 0
+    state: enabled
+- name: digital_clock_recovery_mm_xx_0
+  id: digital_clock_recovery_mm_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    gain_mu: '0.076'
+    gain_omega: '0.0016'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    mu: '0.5'
+    omega: '10'
+    omega_relative_limit: '0.005'
+    type: float
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [688, 376.0]
+    rotation: 0
+    state: enabled
+- name: epy_block_0
+  id: epy_block
+  parameters:
+    _source_code: "import os\nimport zlib\nimport numpy as np\nfrom gnuradio import\
+      \ gr\n\ntry:\n    import reed_solomon_ccsds as _rs_lib\n    _RS_AVAILABLE =\
+      \ True\nexcept ImportError:\n    _RS_AVAILABLE = False\n    print(\"[WARN] reed-solomon-ccsds\
+      \ not installed \u2014 RS correction disabled.\")\n\n\n# \u2500\u2500 Golay(24,12)\
+      \ \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+      \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+      \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+      \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+      \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n_G_N = 12\n_G_H = (\n\
+      \    0x8008ed, 0x4001db, 0x2003b5, 0x100769, 0x80ed1, 0x40da3,\n    0x20b47,\
+      \ 0x1068f, 0x8D1D, 0x4A3B, 0x2477, 0x1FFE\n)\n\n\ndef _parity(v: int) -> int:\n\
+      \    v ^= v >> 16\n    v ^= v >> 8\n    v ^= v >> 4\n    return (0x6996 >> (v\
+      \ & 0xF)) & 1\n\n\ndef _popcount(i: int) -> int:\n    i -= (i >> 1) & 0x55555555\n\
+      \    i = (i & 0x33333333) + ((i >> 2) & 0x33333333)\n    return (((i + (i >>\
+      \ 4)) & 0x0F0F0F0F) * 0x01010101) >> 24\n\n\nclass GolayUncorrectable(Exception):\n\
+      \    pass\n\n\ndef _golay24_decode(word: int):\n    def syndrome(w):\n     \
+      \   return sum(_parity(_G_H[i] & w) << (_G_N - 1 - i) for i in range(_G_N))\n\
+      \n    s = syndrome(word)\n    if _popcount(s) <= 3:\n        e = s << _G_N\n\
+      \    else:\n        e = next(\n            (\n                ((s ^ (_G_H[i]\
+      \ & 0xFFF)) << _G_N) | (1 << (_G_N - i - 1))\n                for i in range(_G_N)\n\
+      \                if _popcount(s ^ (_G_H[i] & 0xFFF)) <= 2\n            ),\n\
+      \            None,\n        )\n        if e is None:\n            q = syndrome(s)\n\
+      \            if _popcount(q) <= 3:\n                e = q\n            else:\n\
+      \                e = next(\n                    (\n                        (1\
+      \ << (2 * _G_N - i - 1)) | (q ^ (_G_H[i] & 0xFFF))\n                       \
+      \ for i in range(_G_N)\n                        if _popcount(q ^ (_G_H[i] &\
+      \ 0xFFF)) <= 2\n                    ),\n                    None,\n        \
+      \        )\n                if e is None:\n                    raise GolayUncorrectable()\n\
+      \n    return (word ^ e) & 0xFFF, _popcount(e)\n\n\n# \u2500\u2500 RS decoder\
+      \ \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+      \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+      \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+      \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+      \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nclass RSDecoder:\n\
+      \    RS_PARITY = 32\n    RS_DATA = 223\n\n    def __init__(self):\n        self.ok\
+      \ = _RS_AVAILABLE\n\n    def decode(self, de_cw: bytes, data_len: int):\n  \
+      \      if not self.ok:\n            return de_cw[:data_len], 0, None\n\n   \
+      \     n_virt = self.RS_DATA - data_len\n        block = np.zeros(255, dtype=np.uint8)\n\
+      \n        block[n_virt:self.RS_DATA] = np.frombuffer(de_cw[:data_len], dtype=np.uint8)\n\
+      \        block[self.RS_DATA:] = np.frombuffer(\n            de_cw[data_len:data_len\
+      \ + self.RS_PARITY], dtype=np.uint8\n        )\n\n        try:\n           \
+      \ n_errs, decoded = _rs_lib.decode_block(block, dual_basis=False)\n        \
+      \    recovered = bytes(decoded[n_virt:self.RS_DATA])\n            return recovered,\
+      \ int(n_errs), True\n        except _rs_lib.UncorrectableError:\n          \
+      \  return de_cw[:data_len], 0, False\n\n\n# \u2500\u2500 Embedded Python Block\
+      \ \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+      \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+      \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+      \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+      \nclass blk(gr.sync_block):\n    \"\"\"\n    SDR-side frame recovery only.\n\
+      \    Writes:\n      clean_frames.bin  -> [2-byte len][frame bytes]...\n    \
+      \  clean_frames.hex  -> one frame hex per line\n    \"\"\"\n\n    ASM = 0x1ACFFC1D\n\
+      \    ASM_LEN = 32\n    GOLAY_LEN = 24\n    CW_BYTES = 255\n    CW_BITS = CW_BYTES\
+      \ * 8\n    RS_BYTES = 32\n    DAT_BYTES = 223\n    ASM_MAX_ERR = 4\n    MAGIC\
+      \ = b\"fOH2F1S\"\n\n    def __init__(self, out_dir=\"/tmp/skylink_out\", debug=False):\n\
+      \        gr.sync_block.__init__(\n            self,\n            name=\"Skylink\
+      \ Frame Recovery\",\n            in_sig=[np.uint8],\n            out_sig=[]\n\
+      \        )\n\n        self.out_dir = str(out_dir)\n        self.debug = bool(debug)\n\
+      \        os.makedirs(self.out_dir, exist_ok=True)\n\n        self.bin_path =\
+      \ os.path.join(self.out_dir, \"clean_frames.bin\")\n        self.hex_path =\
+      \ os.path.join(self.out_dir, \"clean_frames.hex\")\n\n        self._bin_f =\
+      \ open(self.bin_path, \"wb\")\n        self._hex_f = open(self.hex_path, \"\
+      w\", encoding=\"utf-8\")\n\n        self._asm_bits = [(self.ASM >> b) & 1 for\
+      \ b in reversed(range(32))]\n        self._ks = self._build_keystream(self.CW_BYTES)\n\
+      \        self._rs = RSDecoder()\n\n        self._buf = []\n        self._abs0\
+      \ = 0\n        self._search_abs = 0\n        self._seen = set()\n\n        self._candidate_count\
+      \ = 0\n        self._emit_count = 0\n        self._rs_ok_count = 0\n       \
+      \ self._rs_fixed_count = 0\n        self._rs_fail_count = 0\n\n    @staticmethod\n\
+      \    def _build_keystream(n):\n        reg, out = 0xFF, bytearray(n)\n     \
+      \   for bi in range(n):\n            v = 0\n            for _ in range(8):\n\
+      \                v = (v << 1) | (reg >> 7)\n                fb = ((reg >> 7)\
+      \ ^ (reg >> 4) ^ (reg >> 2) ^ reg) & 1\n                reg = ((reg << 1) &\
+      \ 0xFF) | fb\n            out[bi] = v\n        return bytes(out)\n\n    def\
+      \ _dewhiten(self, raw: bytes) -> bytes:\n        return bytes(b ^ k for b, k\
+      \ in zip(raw, self._ks))\n\n    def _asm_dist(self, bits) -> int:\n        return\
+      \ sum(a != b for a, b in zip(bits, self._asm_bits))\n\n    def _find_asm(self,\
+      \ start: int) -> int:\n        limit = len(self._buf) - (self.ASM_LEN + self.GOLAY_LEN\
+      \ + self.CW_BITS)\n        for i in range(start, max(start, limit)):\n     \
+      \       if self._asm_dist(self._buf[i:i + 32]) <= self.ASM_MAX_ERR:\n      \
+      \          return i\n        return -1\n\n    @staticmethod\n    def _pack_msb(bits)\
+      \ -> bytes:\n        out = bytearray(len(bits) // 8)\n        for j, i in enumerate(range(0,\
+      \ len(bits), 8)):\n            b = bits[i:i + 8]\n            out[j] = (\n \
+      \               (b[0] << 7) | (b[1] << 6) | (b[2] << 5) | (b[3] << 4) |\n  \
+      \              (b[4] << 3) | (b[5] << 2) | (b[6] << 1) | b[7]\n            )\n\
+      \        return bytes(out)\n\n    @staticmethod\n    def _bits_to_int(bits)\
+      \ -> int:\n        v = 0\n        for b in bits:\n            v = (v << 1) |\
+      \ (b & 1)\n        return v\n\n    def _trim_buf(self):\n        if len(self._buf)\
+      \ > 300_000:\n            drop = len(self._buf) - 300_000\n            del self._buf[:drop]\n\
+      \            self._abs0 += drop\n            self._search_abs = max(self._search_abs,\
+      \ self._abs0)\n\n    def _append_frame(self, asm_abs: int, frame_data: bytes):\n\
+      \        self._emit_count += 1\n        self._bin_f.write(len(frame_data).to_bytes(2,\
+      \ \"big\") + frame_data)\n        self._hex_f.write(f\"{self._emit_count:04d}\
+      \ asm={asm_abs} {frame_data.hex()}\\n\")\n\n        flags_vc = frame_data[7]\
+      \ if len(frame_data) > 7 else 0\n        vc = flags_vc & 0x07\n        seq =\
+      \ ((frame_data[9] << 8) | frame_data[10]) if len(frame_data) > 10 else -1\n\n\
+      \        print(\n            f\"[FRAME {self._emit_count:03d}] asm={asm_abs}\
+      \ vc={vc} seq={seq} len={len(frame_data)}\",\n            flush=True\n     \
+      \   )\n\n    def work(self, input_items, output_items):\n        bits = input_items[0].astype(np.uint8)\
+      \ & 1\n        if not len(bits):\n            return 0\n\n        self._buf.extend(bits.tolist())\n\
+      \        self._trim_buf()\n\n        rel = max(0, self._search_abs - self._abs0)\n\
+      \n        while True:\n            asm_rel = self._find_asm(rel)\n         \
+      \   if asm_rel < 0:\n                break\n\n            g_start = asm_rel\
+      \ + self.ASM_LEN\n            c_start = g_start + self.GOLAY_LEN\n\n       \
+      \     golay_bits = self._buf[g_start:g_start + self.GOLAY_LEN]\n           \
+      \ cw_bits = self._buf[c_start:c_start + self.CW_BITS]\n\n            if len(golay_bits)\
+      \ < self.GOLAY_LEN or len(cw_bits) < self.CW_BITS:\n                break\n\n\
+      \            def reject():\n                nonlocal rel\n                rel\
+      \ = asm_rel + 1\n                self._search_abs = self._abs0 + rel\n\n   \
+      \         golay_raw = self._bits_to_int(golay_bits)\n            try:\n    \
+      \            data12, _g_errs = _golay24_decode(golay_raw)\n            except\
+      \ GolayUncorrectable:\n                reject()\n                continue\n\n\
+      \            data_len = data12 - self.RS_BYTES\n            if not (1 <= data_len\
+      \ <= self.DAT_BYTES):\n                reject()\n                continue\n\n\
+      \            raw255 = self._pack_msb(cw_bits)\n            de255 = self._dewhiten(raw255)\n\
+      \n            if de255[:7] != self.MAGIC:\n                reject()\n      \
+      \          continue\n\n            if (11 + de255[8]) > self.DAT_BYTES:\n  \
+      \              reject()\n                continue\n\n            key = zlib.crc32(raw255)\
+      \ & 0xFFFFFFFF\n            if key in self._seen:\n                reject()\n\
+      \                continue\n            self._seen.add(key)\n\n            de_cw\
+      \ = de255[:data12]\n\n            self._candidate_count += 1\n            rs_data,\
+      \ rs_errs, rs_ok = self._rs.decode(de_cw, data_len)\n\n            if rs_ok\
+      \ is False:\n                self._rs_fail_count += 1\n                frame_data\
+      \ = de_cw[:data_len]\n            elif rs_ok is True:\n                if rs_errs\
+      \ > 0:\n                    self._rs_fixed_count += 1\n                else:\n\
+      \                    self._rs_ok_count += 1\n                frame_data = rs_data\n\
+      \            else:\n                frame_data = de_cw[:data_len]\n\n      \
+      \      if frame_data[:7] != self.MAGIC:\n                reject()\n        \
+      \        continue\n\n            self._append_frame(self._abs0 + asm_rel, frame_data)\n\
+      \            reject()\n\n        return len(input_items[0])\n\n    def stop(self):\n\
+      \        try:\n            self._bin_f.flush()\n            self._bin_f.close()\n\
+      \        except Exception:\n            pass\n\n        try:\n            self._hex_f.flush()\n\
+      \            self._hex_f.close()\n        except Exception:\n            pass\n\
+      \n        print(\"\\n\" + \"\u2550\" * 62)\n        print(\"  FRAME RECOVERY\
+      \ SUMMARY\")\n        print(\"\u2500\" * 62)\n        print(f\"  Candidates\
+      \ seen      : {self._candidate_count}\")\n        print(f\"  Frames emitted\
+      \       : {self._emit_count}\")\n        if _RS_AVAILABLE:\n            print(f\"\
+      \  RS clean (0 errors)  : {self._rs_ok_count}\")\n            print(f\"  RS\
+      \ corrected         : {self._rs_fixed_count}\")\n            print(f\"  RS uncorrectable\
+      \     : {self._rs_fail_count}\")\n        print(f\"  Binary log           :\
+      \ {self.bin_path}\")\n        print(f\"  Hex text             : {self.hex_path}\"\
+      )\n        print(\"\u2550\" * 62 + \"\\n\")\n        return True\n"
+    affinity: ''
+    alias: ''
+    comment: ''
+    debug: 'True'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    out_dir: '''/home/sbuhrman/CubeSat/Skylink'''
+  states:
+    _io_cache: ('Skylink Frame Recovery', 'blk', [('out_dir', "'/tmp/skylink_out'"),
+      ('debug', 'False')], [('0', 'byte', 1)], [], '\n    SDR-side frame recovery
+      only.\n    Writes:\n      clean_frames.bin  -> [2-byte len][frame bytes]...\n      clean_frames.hex  ->
+      one frame hex per line\n    ', ['debug', 'out_dir'])
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1072, 296.0]
+    rotation: 0
+    state: disabled
+- name: epy_block_1
+  id: epy_block
+  parameters:
+    _source_code: "import os\nimport zlib\nimport numpy as np\nfrom gnuradio import\
+      \ gr\n\n# \u2500\u2500 Golay(24,12) constants \u2500\u2500\u2500\u2500\u2500\
+      \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+      \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+      \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+      \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n_G_N = 12\n_G_H = (\n    0x8008ed,\
+      \ 0x4001db, 0x2003b5, 0x100769, 0x80ed1, 0x40da3,\n    0x20b47,  0x1068f,  0x8d1d,\
+      \   0x4a3b,   0x2477,  0x1ffe\n)\n\n\ndef _parity(v: int) -> int:\n    v ^=\
+      \ v >> 16\n    v ^= v >> 8\n    v ^= v >> 4\n    return (0x6996 >> (v & 0xF))\
+      \ & 1\n\n\ndef _popcount(i: int) -> int:\n    return int(i).bit_count()\n\n\n\
+      class GolayUncorrectable(Exception):\n    pass\n\n\ndef _golay24_decode(word:\
+      \ int) -> tuple[int, int]:\n    \"\"\"Decode a 24-bit Golay codeword. Returns\
+      \ (data12, n_errors). Raises GolayUncorrectable.\"\"\"\n    def syndrome(w):\n\
+      \        return sum(_parity(_G_H[i] & w) << (_G_N - 1 - i) for i in range(_G_N))\n\
+      \n    s = syndrome(word)\n\n    if _popcount(s) <= 3:\n        e = s << _G_N\n\
+      \    else:\n        e = next(\n            (\n                ((s ^ (_G_H[i]\
+      \ & 0xFFF)) << _G_N) | (1 << (_G_N - i - 1))\n                for i in range(_G_N)\n\
+      \                if _popcount(s ^ (_G_H[i] & 0xFFF)) <= 2\n            ),\n\
+      \            None\n        )\n        if e is None:\n            q = syndrome(s)\
+      \  # second syndrome\n            if _popcount(q) <= 3:\n                e =\
+      \ q\n            else:\n                e = next(\n                    (\n \
+      \                       (1 << (2 * _G_N - i - 1)) | (q ^ (_G_H[i] & 0xFFF))\n\
+      \                        for i in range(_G_N)\n                        if _popcount(q\
+      \ ^ (_G_H[i] & 0xFFF)) <= 2\n                    ),\n                    None\n\
+      \                )\n                if e is None:\n                    raise\
+      \ GolayUncorrectable()\n\n    corrected = (word ^ e) & 0xFFF\n    return corrected,\
+      \ _popcount(e)\n\n\n# \u2500\u2500 GNU Radio block \u2500\u2500\u2500\u2500\u2500\
+      \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+      \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+      \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+      \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\
+      \u2500\u2500\n\nclass blk(gr.sync_block):\n    \"\"\"\n    Skylink / FORESAIL-1\
+      \ frame decoder\n\n    Input  : unpacked bits (uint8, one bit per byte, MSB-first)\n\
+      \    Output : none  (frames written to <out_dir>/clean_frames.bin)\n\n    Framing:\
+      \ ASM (0x1ACFFC1D, 32 bits)\n           + Golay(24,12) length field\n      \
+      \     + RS(255,223) CCSDS-whitened codeword\n\n    Output file is self-delimiting:\
+      \ each frame prefixed with 2-byte big-endian length.\n    \"\"\"\n\n    ASM\
+      \         = 0x1ACFFC1D\n    ASM_LEN     = 32\n    GOLAY_LEN   = 24\n    CW_BYTES\
+      \    = 255\n    RS_BYTES    = 32\n    DAT_BYTES   = 223\n    ASM_MAX_ERR = 3\n\
+      \    MAGIC       = b'fOH2F1S'\n\n    VC_NAMES = {\n        0: \"VC0 Commanding\"\
+      ,\n        1: \"VC1 Mass data transfer\",\n        2: \"VC2 Service channel\"\
+      ,\n        3: \"VC3 HAM repeater\",\n    }\n\n    def __init__(self, out_dir=\"\
+      /tmp/skylink_out\"):\n        gr.sync_block.__init__(self, name=\"Skylink Frame\
+      \ Decoder\",\n                               in_sig=[np.uint8], out_sig=[])\n\
+      \        self.out_dir = str(out_dir)\n        os.makedirs(self.out_dir, exist_ok=True)\n\
+      \n        self._asm_bits = [(self.ASM >> b) & 1 for b in reversed(range(32))]\n\
+      \        self._cw_bits  = self.CW_BYTES * 8\n        self._ks       = self._build_keystream(self.CW_BYTES)\n\
+      \n        self._buf = []\n        self._abs0 = 0\n        self._search_abs =\
+      \ 0\n        self._asm_count = 0\n        self._seen = set()\n        self._clean_frames\
+      \ = []\n\n    @staticmethod\n    def _build_keystream(nbytes: int) -> bytes:\n\
+      \        \"\"\"CCSDS PN sequence: poly x^8+x^7+x^5+x^3+1, init=0xFF.\"\"\"\n\
+      \        reg, out = 0xFF, bytearray(nbytes)\n        for bi in range(nbytes):\n\
+      \            v = 0\n            for _ in range(8):\n                v   = (v\
+      \ << 1) | (reg >> 7)\n                fb  = ((reg >> 7) ^ (reg >> 4) ^ (reg\
+      \ >> 2) ^ reg) & 1\n                reg = ((reg << 1) & 0xFF) | fb\n       \
+      \     out[bi] = v\n        return bytes(out)\n\n    def _dewhiten(self, raw:\
+      \ bytes) -> bytes:\n        return bytes(b ^ k for b, k in zip(raw, self._ks))\n\
+      \n    def _asm_distance(self, bits) -> int:\n        return sum(a != b for a,\
+      \ b in zip(bits, self._asm_bits))\n\n    def _find_asm(self, start_rel: int)\
+      \ -> int:\n        limit = len(self._buf) - (self.ASM_LEN + self.GOLAY_LEN +\
+      \ self._cw_bits)\n        for i in range(start_rel, limit):\n            if\
+      \ self._asm_distance(self._buf[i:i + 32]) <= self.ASM_MAX_ERR:\n           \
+      \     return i\n        return -1\n\n    @staticmethod\n    def _pack_msb(bits)\
+      \ -> bytes:\n        out = bytearray(len(bits) // 8)\n        for j, i in enumerate(range(0,\
+      \ len(bits), 8)):\n            b = bits[i:i+8]\n            out[j] = (\n   \
+      \             (b[0] << 7) | (b[1] << 6) | (b[2] << 5) | (b[3] << 4) |\n    \
+      \            (b[4] << 3) | (b[5] << 2) | (b[6] << 1) | b[7]\n            )\n\
+      \        return bytes(out)\n\n    @staticmethod\n    def _bits_to_int(bits)\
+      \ -> int:\n        v = 0\n        for b in bits:\n            v = (v << 1) |\
+      \ (b & 1)\n        return v\n\n    def _trim_buf(self):\n        if len(self._buf)\
+      \ > 300_000:\n            drop = len(self._buf) - 300_000\n            del self._buf[:drop]\n\
+      \            self._abs0 += drop\n            self._search_abs = max(self._search_abs,\
+      \ self._abs0)\n\n    def _emit(self, de255: bytes, golay_raw: int, data12: int,\
+      \ n_errors: int, asm_abs: int):\n        data_len    = data12 - self.RS_BYTES\n\
+      \        proto_id    = de255[0]\n        sat_id      = de255[1:7]\n        flags_vc\
+      \    = de255[7]\n\n        # Fix: VC is 2 bits, not 3\n        vc          =\
+      \ flags_vc & 0x03\n\n        # Keep original indexing/behavior for the rest\
+      \ so output stays familiar\n        has_auth    = (flags_vc >> 3) & 1\n    \
+      \    arq_on      = (flags_vc >> 4) & 1\n        has_payload = (flags_vc >> 5)\
+      \ & 1\n\n        ext_len     = de255[8]\n        seq         = (de255[9] <<\
+      \ 8) | de255[10]\n        ext_end     = 11 + ext_len\n\n        clean_frame\
+      \ = de255[:data_len]\n        clean_ext   = clean_frame[11:min(ext_end, data_len)]\n\
+      \        after_ext   = clean_frame[ext_end:] if data_len > ext_end else b\"\"\
+      \n        clean_auth, clean_payload = (\n            (after_ext[-8:], after_ext[:-8])\n\
+      \            if has_auth and len(after_ext) >= 8 else (b\"\", after_ext)\n \
+      \       )\n\n        vc_label = self.VC_NAMES.get(vc, f\"VC{vc}\")\n\n     \
+      \   SEP = \"\u2500\" * 60\n        self._asm_count += 1\n        print(f\"\\\
+      n{'\u2550'*60}\")\n        print(f\"  ASM #{self._asm_count}  @ bit {asm_abs}\"\
+      )\n        print(SEP)\n        print(f\"  Protocol ID : 0x{proto_id:02X}  ({'OK'\
+      \ if proto_id == 0x66 else 'BAD'})\")\n        print(f\"  Satellite   : {sat_id.decode(errors='replace')}\
+      \  ({sat_id.hex()})\")\n        print(f\"  VC          : {vc}  ({vc_label})\"\
+      )\n        print(f\"  Flags+VC    : 0x{flags_vc:02X}  \"\n              f\"\
+      [HAS_PAYLOAD={has_payload} ARQ_ON={arq_on} HAS_AUTH={has_auth} VC={vc}]\")\n\
+      \        print(f\"  Frame seq   : {seq}  (0x{seq:04X})\")\n        print(f\"\
+      \  Ext hdr len : {ext_len}\")\n        if clean_ext:\n            print(f\"\
+      \  Ext header  : {clean_ext.hex()}\")\n        if clean_payload:\n         \
+      \   print(f\"  Payload     : {len(clean_payload)} bytes\")\n            for\
+      \ off in range(0, len(clean_payload), 16):\n                chunk = clean_payload[off:off+16]\n\
+      \                h = \" \".join(f\"{b:02X}\" for b in chunk)\n             \
+      \   a = \"\".join(chr(b) if 32 <= b < 127 else \".\" for b in chunk)\n     \
+      \           print(f\"    [{off:03d}]  {h:<47}  {a}\")\n        if clean_auth:\n\
+      \            print(f\"  Auth (8B)   : {clean_auth.hex()}\")\n        print(f\"\
+      \  RS FEC (32B): {de255[self.DAT_BYTES:].hex()}\")\n        err_str = f\"{n_errors}\
+      \ bit error(s) corrected\" if n_errors else \"no errors\"\n        print(f\"\
+      \  Golay       : 0x{golay_raw:06X}  data12={data12} -> {data_len} clean bytes\
+      \  [{err_str}]\")\n        print(f\"  Clean frame : {clean_frame!r}\")\n   \
+      \     print(SEP)\n\n        self._clean_frames.append(clean_frame)\n       \
+      \ out_path = os.path.join(self.out_dir, \"clean_frames.bin\")\n        with\
+      \ open(out_path, \"wb\") as f:\n            for cf in self._clean_frames:\n\
+      \                f.write(len(cf).to_bytes(2, \"big\") + cf)\n        print(f\"\
+      \  >> Wrote {len(self._clean_frames)} frame(s) to {out_path}\", flush=True)\n\
+      \n    def work(self, input_items, output_items):\n        bits = input_items[0].astype(np.uint8)\
+      \ & 1\n        if not len(bits):\n            return 0\n\n        self._buf.extend(bits.tolist())\n\
+      \        self._trim_buf()\n\n        rel = max(0, self._search_abs - self._abs0)\n\
+      \n        while True:\n            asm_rel = self._find_asm(rel)\n         \
+      \   if asm_rel < 0:\n                break\n\n            g_start = asm_rel\
+      \ + self.ASM_LEN\n            c_start = g_start + self.GOLAY_LEN\n\n       \
+      \     golay_bits = self._buf[g_start:g_start + self.GOLAY_LEN]\n           \
+      \ cw_bits    = self._buf[c_start:c_start + self._cw_bits]\n\n            if\
+      \ len(golay_bits) < self.GOLAY_LEN or len(cw_bits) < self._cw_bits:\n      \
+      \          print(f\"[reject] short buffer after ASM @ bit {self._abs0 + asm_rel}\"\
+      )\n                break\n\n            def reject(reason):\n              \
+      \  nonlocal rel\n                print(f\"[reject] ASM @ bit {self._abs0 + asm_rel}:\
+      \ {reason}\")\n                rel = asm_rel + 1\n                self._search_abs\
+      \ = self._abs0 + rel\n\n            golay_raw = self._bits_to_int(golay_bits)\n\
+      \            try:\n                data12, n_errors = _golay24_decode(golay_raw)\n\
+      \            except GolayUncorrectable:\n                reject(\"Golay uncorrectable\"\
+      )\n                continue\n\n            data_len = data12 - self.RS_BYTES\n\
+      \            if not (1 <= data_len <= self.DAT_BYTES):\n                reject(f\"\
+      bad data_len={data_len}\")\n                continue\n\n            raw255 =\
+      \ self._pack_msb(cw_bits)\n            de255  = self._dewhiten(raw255)\n\n \
+      \           if de255[:7] != self.MAGIC:\n                reject(f\"bad magic\
+      \ {de255[:7].hex()}\")\n                continue\n\n            if (11 + de255[8])\
+      \ > self.DAT_BYTES:\n                reject(f\"ext_len too large: ext_len={de255[8]}\"\
+      )\n                continue\n\n            key = zlib.crc32(raw255) & 0xFFFFFFFF\n\
+      \            if key in self._seen:\n                reject(\"duplicate frame\"\
+      )\n                continue\n            self._seen.add(key)\n\n           \
+      \ self._emit(de255, golay_raw, data12, n_errors, self._abs0 + asm_rel)\n   \
+      \         rel = asm_rel + 1\n            self._search_abs = self._abs0 + rel\n\
+      \n        return len(input_items[0])\n"
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    out_dir: '''home/groundstation-user/Documents/GNU-Radio-Flow-Graphs/Skylink'''
+  states:
+    _io_cache: '(''Skylink Frame Decoder'', ''blk'', [(''out_dir'', "''/tmp/skylink_out''")],
+      [(''0'', ''byte'', 1)], [], ''\n    Skylink / FORESAIL-1 frame decoder\n\n    Input  :
+      unpacked bits (uint8, one bit per byte, MSB-first)\n    Output : none  (frames
+      written to <out_dir>/clean_frames.bin)\n\n    Framing: ASM (0x1ACFFC1D, 32 bits)\n           +
+      Golay(24,12) length field\n           + RS(255,223) CCSDS-whitened codeword\n\n    Output
+      file is self-delimiting: each frame prefixed with 2-byte big-endian length.\n    '',
+      [''out_dir''])'
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1072, 408.0]
+    rotation: 0
+    state: enabled
+- name: epy_block_1_0
+  id: epy_block
+  parameters:
+    _source_code: "#!/usr/bin/env python3\nimport csv\nimport json\nimport sys\nfrom\
+      \ datetime import datetime, timezone\n\nimport os\nimport zlib\nimport numpy\
+      \ as np\nfrom gnuradio import gr\n\nSERVICE_LABELS = {\n    (1, 7):  \"TC Verification:\
+      \ Execution Completion\",\n    (3, 2):  \"OBC Housekeeping\",\n    (3, 3): \
+      \ \"EPS Housekeeping\",\n    (3, 4):  \"ADCS Housekeeping\",\n    (3, 5):  \"\
+      UHF Housekeeping\",\n    (3, 6):  \"Deployment Housekeeping\",\n    (4, 4):\
+      \  \"Event\",\n    (6, 8):  \"File Transfer Init\",\n    (6, 13): \"File Transfer\
+      \ Block\",\n}\n\nVC_LABELS = {\n    0: \"VC0\",\n    1: \"VC1\",\n    2: \"\
+      VC2\",\n    3: \"Ham Repeater\",\n}\n\n\ndef safe_dt(ts: int) -> str:\n    try:\n\
+      \        return datetime.fromtimestamp(ts, tz=timezone.utc).isoformat()\n  \
+      \  except Exception:\n        return \"\"\n\n\ndef u32be(b: bytes, off: int)\
+      \ -> int:\n    return int.from_bytes(b[off:off+4], \"big\", signed=False)\n\n\
+      \ndef read_frames_from_csv(csv_path: str):\n    rows = []\n    with open(csv_path,\
+      \ newline=\"\", encoding=\"utf-8\") as f:\n        reader = csv.DictReader(f)\n\
+      \        for row in reader:\n            hx = (row.get(\"frame_hex\") or \"\"\
+      ).strip()\n            if not hx:\n                continue\n            try:\n\
+      \                frame = bytes.fromhex(hx)\n            except Exception:\n\
+      \                continue\n            rows.append((row, frame))\n    return\
+      \ rows\n\n\ndef find_service_marker(frame: bytes):\n    known = set(SERVICE_LABELS.keys())\n\
+      \    for i in range(len(frame) - 2):\n        if frame[i] != 0x10:\n       \
+      \     continue\n        st = frame[i + 1]\n        sst = frame[i + 2]\n    \
+      \    if (st, sst) in known:\n            return {\n                \"marker_off\"\
+      : i,\n                \"service\": st,\n                \"subtype\": sst,\n\
+      \                \"payload_off\": i + 3,\n            }\n    return None\n\n\
+      \ndef classify_frame(frame: bytes):\n    row = {\n        \"frame_len\": len(frame),\n\
+      \        \"proto_ok\": len(frame) >= 7 and frame[:7] == b\"fOH2F1S\",\n    \
+      \    \"protocol_id\": \"\",\n        \"satellite_id_ascii\": \"\",\n       \
+      \ \"satellite_id_hex\": \"\",\n        \"flags_vc\": \"\",\n        \"vc\":\
+      \ \"\",\n        \"vc_label\": \"\",\n        \"seq_le\": \"\",\n        \"\
+      service_type\": \"\",\n        \"service_subtype\": \"\",\n        \"label\"\
+      : \"\",\n        \"pus_marker_off\": \"\",\n        \"hk_unix_time\": \"\",\n\
+      \        \"hk_utc\": \"\",\n        \"header_preview_hex\": frame[:24].hex(),\n\
+      \        \"service_payload_hex\": \"\",\n        \"frame_hex\": frame.hex(),\n\
+      \    }\n\n    if len(frame) < 11:\n        return row\n\n    proto = frame[0]\n\
+      \    sat_id = frame[1:7]\n    flags_vc = frame[7]\n    vc = flags_vc & 0x07\n\
+      \n    # Sequence is little-endian in these frames:\n    # 96 05 -> 1430, 97\
+      \ 05 -> 1431, etc.\n    seq_le = frame[9] | (frame[10] << 8)\n\n    row[\"protocol_id\"\
+      ] = f\"0x{proto:02X}\"\n    row[\"satellite_id_ascii\"] = sat_id.decode(\"ascii\"\
+      , errors=\"replace\")\n    row[\"satellite_id_hex\"] = sat_id.hex()\n    row[\"\
+      flags_vc\"] = f\"0x{flags_vc:02X}\"\n    row[\"vc\"] = vc\n    row[\"vc_label\"\
+      ] = VC_LABELS.get(vc, f\"VC{vc}\")\n    row[\"seq_le\"] = seq_le\n\n    # Special\
+      \ case: Ham repeater traffic on VC=3\n    if vc == 3:\n        row[\"label\"\
+      ] = \"Ham Repeater\"\n        return row\n\n    pus = find_service_marker(frame)\n\
+      \    if pus is None:\n        row[\"label\"] = row[\"vc_label\"]\n        return\
+      \ row\n\n    service = pus[\"service\"]\n    subtype = pus[\"subtype\"]\n\n\
+      \    row[\"service_type\"] = service\n    row[\"service_subtype\"] = subtype\n\
+      \    row[\"label\"] = SERVICE_LABELS.get((service, subtype), row[\"vc_label\"\
+      ])\n    row[\"pus_marker_off\"] = pus[\"marker_off\"]\n\n    payload = frame[pus[\"\
+      payload_off\"]:]\n    row[\"service_payload_hex\"] = payload.hex()\n\n    #\
+      \ Housekeeping timestamp begins immediately after 10 / service / subtype\n \
+      \   if len(payload) >= 4:\n        ts = u32be(payload, 0)\n        if 1600000000\
+      \ <= ts <= 2000000000:\n            row[\"hk_unix_time\"] = ts\n           \
+      \ row[\"hk_utc\"] = safe_dt(ts)\n\n    return row\n\n\ndef write_outputs(rows,\
+      \ out_base):\n    csv_path = out_base + \"_classified.csv\"\n    jsonl_path\
+      \ = out_base + \"_classified.jsonl\"\n\n    fieldnames = [\n        \"index\"\
+      ,\n        \"frame_len\",\n        \"proto_ok\",\n        \"protocol_id\",\n\
+      \        \"satellite_id_ascii\",\n        \"satellite_id_hex\",\n        \"\
+      flags_vc\",\n        \"vc\",\n        \"vc_label\",\n        \"seq_le\",\n \
+      \       \"service_type\",\n        \"service_subtype\",\n        \"label\",\n\
+      \        \"pus_marker_off\",\n        \"hk_unix_time\",\n        \"hk_utc\"\
+      ,\n        \"header_preview_hex\",\n        \"service_payload_hex\",\n     \
+      \   \"frame_hex\",\n    ]\n\n    with open(csv_path, \"w\", newline=\"\", encoding=\"\
+      utf-8\") as f:\n        writer = csv.DictWriter(f, fieldnames=fieldnames)\n\
+      \        writer.writeheader()\n        for row in rows:\n            writer.writerow(row)\n\
+      \n    with open(jsonl_path, \"w\", encoding=\"utf-8\") as f:\n        for row\
+      \ in rows:\n            f.write(json.dumps(row, sort_keys=False) + \"\\n\")\n\
+      \n    return csv_path, jsonl_path\n\n\ndef main():\n    if len(sys.argv) !=\
+      \ 2:\n        print(\"Usage: python3 parse_clean_frames_final.py clean_frames_parsed.csv\"\
+      )\n        sys.exit(1)\n\n    in_csv = sys.argv[1]\n    frames = read_frames_from_csv(in_csv)\n\
+      \n    rows = []\n    for i, (_, frame) in enumerate(frames, start=1):\n    \
+      \    row = classify_frame(frame)\n        row[\"index\"] = i\n        rows.append(row)\n\
+      \n    out_base = in_csv.rsplit(\".\", 1)[0]\n    csv_path, jsonl_path = write_outputs(rows,\
+      \ out_base)\n\n    print(f\"Frames read    : {len(rows)}\")\n    print(f\"CSV\
+      \ written    : {csv_path}\")\n    print(f\"JSONL written  : {jsonl_path}\")\n\
+      \n    by_label = {}\n    by_vc = {}\n    for r in rows:\n        lbl = r[\"\
+      label\"] or \"Unclassified\"\n        by_label[lbl] = by_label.get(lbl, 0) +\
+      \ 1\n\n        vc_lbl = r[\"vc_label\"] or \"Unknown VC\"\n        by_vc[vc_lbl]\
+      \ = by_vc.get(vc_lbl, 0) + 1\n\n    print(\"\\nCounts by VC:\")\n    for k in\
+      \ sorted(by_vc):\n        print(f\"  {k}: {by_vc[k]}\")\n\n    print(\"\\nCounts\
+      \ by label:\")\n    for k in sorted(by_label):\n        print(f\"  {k}: {by_label[k]}\"\
+      )\n\n    print(\"\\nFirst few rows:\")\n    for r in rows[:10]:\n        print(\n\
+      \            f\"idx={r['index']} \"\n            f\"seq={r['seq_le']} \"\n \
+      \           f\"vc={r['vc']} ({r['vc_label']}) \"\n            f\"type={r['service_type']}/{r['service_subtype']}\
+      \ \"\n            f\"label={r['label']} \"\n            f\"time={r['hk_utc']}\"\
+      \n        )\n\n\nif __name__ == \"__main__\":\n    main()\n"
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    out_dir: '''home/groundstation-user/Documents/GNU-Radio-Flow-Graphs/Skylink'''
+  states:
+    _io_cache: '(''Skylink Frame Decoder'', ''blk'', [(''out_dir'', "''/tmp/skylink_out''")],
+      [(''0'', ''byte'', 1)], [], ''\n    Skylink / FORESAIL-1 frame decoder\n\n    Input  :
+      unpacked bits (uint8, one bit per byte, MSB-first)\n    Output : none  (frames
+      written to <out_dir>/clean_frames.bin)\n\n    Framing: ASM (0x1ACFFC1D, 32 bits)\n           +
+      Golay(24,12) length field\n           + RS(255,223) CCSDS-whitened codeword\n\n    Output
+      file is self-delimiting: each frame prefixed with 2-byte big-endian length.\n    '',
+      [''out_dir''])'
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1072, 360.0]
+    rotation: 0
+    state: disabled
+- name: fir_filter_xxx_0
+  id: fir_filter_xxx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    decim: '4'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samp_delay: '0'
+    taps: 'True'
+    type: ccc
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1040, 88.0]
+    rotation: 0
+    state: enabled
+- name: freq_xlating_fir_filter_xxx_0
+  id: freq_xlating_fir_filter_xxx
+  parameters:
+    affinity: ''
+    alias: ''
+    center_freq: 125000 + tune_shift
+    comment: ''
+    decim: '20'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samp_rate: samp_rate
+    taps: firdes.low_pass(1, samp_rate, 6000, 2000, window.WIN_BLACKMAN_HARRIS)
+    type: ccc
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [384, 176.0]
+    rotation: 0
+    state: enabled
+- name: low_pass_filter_0
+  id: low_pass_filter
+  parameters:
+    affinity: ''
+    alias: ''
+    beta: '6.76'
+    comment: ''
+    cutoff_freq: '14000'
+    decim: '1'
+    gain: '1'
+    interp: '1'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samp_rate: '50000'
+    type: fir_filter_fff
+    width: '3000'
+    win: window.WIN_HAMMING
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [432, 452.0]
+    rotation: 0
+    state: disabled
+- name: qtgui_sink_x_0_0
+  id: qtgui_sink_x
+  parameters:
+    affinity: ''
+    alias: ''
+    bw: '24000'
+    comment: ''
+    fc: '0'
+    fftsize: '1024'
+    gui_hint: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    name: '""'
+    plotconst: 'False'
+    plotfreq: 'True'
+    plottime: 'False'
+    plotwaterfall: 'True'
+    rate: '32'
+    showports: 'True'
+    showrf: 'True'
+    type: complex
+    wintype: window.WIN_HAMMING
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1256, 80.0]
+    rotation: 0
+    state: enabled
+- name: rational_resampler_xxx_0
+  id: rational_resampler_xxx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    decim: '25'
+    fbw: '0'
+    interp: '24'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    taps: '[]'
+    type: ccc
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [696, 176.0]
+    rotation: 0
+    state: enabled
+- name: satellites_satellite_decoder_0
+  id: satellites_satellite_decoder
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    definition: name
+    file: ''
+    iq: 'True'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    name: FORESAIL-1P
+    norad: '0'
+    options: '""'
+    samp_rate: '96000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [792, 512.0]
+    rotation: 0
+    state: disabled
+- name: virtual_sink_0
+  id: virtual_sink
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: demod
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1232, 200.0]
+    rotation: 0
+    state: enabled
+- name: virtual_source_0
+  id: virtual_source
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: demod
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [8, 408.0]
+    rotation: 0
+    state: enabled
+
+connections:
+- [analog_agc2_xx_0, '0', analog_quadrature_demod_cf_0, '0']
+- [analog_agc2_xx_0, '0', fir_filter_xxx_0, '0']
+- [analog_agc2_xx_0, '0', satellites_satellite_decoder_0, '0']
+- [analog_agc_xx_0, '0', digital_clock_recovery_mm_xx_0, '0']
+- [analog_agc_xx_0, '0', low_pass_filter_0, '0']
+- [analog_quadrature_demod_cf_0, '0', virtual_sink_0, '0']
+- [blocks_file_source_0_0, '0', blocks_throttle_0, '0']
+- [blocks_throttle_0, '0', freq_xlating_fir_filter_xxx_0, '0']
+- [dc_blocker_xx_0, '0', analog_agc_xx_0, '0']
+- [digital_binary_slicer_fb_1, '0', epy_block_0, '0']
+- [digital_binary_slicer_fb_1, '0', epy_block_1, '0']
+- [digital_binary_slicer_fb_1, '0', epy_block_1_0, '0']
+- [digital_clock_recovery_mm_xx_0, '0', digital_binary_slicer_fb_1, '0']
+- [fir_filter_xxx_0, '0', qtgui_sink_x_0_0, '0']
+- [freq_xlating_fir_filter_xxx_0, '0', rational_resampler_xxx_0, '0']
+- [low_pass_filter_0, '0', digital_clock_recovery_mm_xx_0, '0']
+- [rational_resampler_xxx_0, '0', analog_agc2_xx_0, '0']
+- [satellites_satellite_decoder_0, out, blocks_message_debug_0, print]
+- [virtual_source_0, '0', dc_blocker_xx_0, '0']
+
+metadata:
+  file_format: 1
+  grc_version: 3.10.5.1
